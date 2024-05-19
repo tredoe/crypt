@@ -1,6 +1,5 @@
-// (C) Copyright 2012, Jeramey Crawford <jeramey@antihe.ro>. All
-// rights reserved. Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
+// SPDX-FileCopyrightText: 2012 Jeramey Crawford <jeramey@antihe.ro>
+// SPDX-License-Identifier: BSD-2-Clause
 
 // Package sha256_crypt implements Ulrich Drepper's SHA256-crypt password
 // hashing algorithm.

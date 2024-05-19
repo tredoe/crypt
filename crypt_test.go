@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2013 Jonás Melián
+// SPDX-License-Identifier: BSD-2-Clause
+
 package crypt_test
 
 import (

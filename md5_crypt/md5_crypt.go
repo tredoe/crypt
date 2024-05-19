@@ -1,6 +1,5 @@
-// (C) Copyright 2012, Jeramey Crawford <jeramey@antihe.ro>. All
-// rights reserved. Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
+// SPDX-FileCopyrightText: 2012 Jeramey Crawford <jeramey@antihe.ro>
+// SPDX-License-Identifier: BSD-2-Clause
 
 // Package md5_crypt implements the standard Unix MD5-crypt algorithm created by
 // Poul-Henning Kamp for FreeBSD.

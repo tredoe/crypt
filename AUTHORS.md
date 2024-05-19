@@ -1,8 +1,10 @@
-### Initial author
+# Authors
 
-[Jeramey Crawford](https://github.com/jeramey)
+## Initial author
 
-### Other authors
+- Jeramey Crawford <jeramey@antihe.ro>
+
+## Other authors
 
 - [Jonás Melián](https://github.com/kless)
 - [Kohei YOSHIDA](https://github.com/yosida95)

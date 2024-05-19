@@ -1,6 +1,6 @@
-// Copyright (c) 2015 Kohei YOSHIDA. All rights reserved.
-// This software is licensed under the 3-Clause BSD License
-// that can be found in LICENSE file.
+// SPDX-FileCopyrightText: 2015 Kohei YOSHIDA
+// SPDX-License-Identifier: BSD-2-Clause
+
 package internal
 
 const (

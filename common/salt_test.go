@@ -1,22 +1,21 @@
-// (C) Copyright 2012, Jeramey Crawford <jeramey@antihe.ro>. All
-// rights reserved. Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
+// SPDX-FileCopyrightText: 2012 Jeramey Crawford <jeramey@antihe.ro>
+// SPDX-License-Identifier: BSD-2-Clause
 
 package common
 
 import (
-	"testing"
 	"fmt"
 	"strings"
+	"testing"
 )
 
 var _Salt = &Salt{
-	MagicPrefix: []byte("$foo$"),
-	SaltLenMin:  1,
-	SaltLenMax:  8,
+	MagicPrefix:   []byte("$foo$"),
+	SaltLenMin:    1,
+	SaltLenMax:    8,
 	RoundsDefault: 5,
-	RoundsMin: 1,
-	RoundsMax: 10,
+	RoundsMin:     1,
+	RoundsMax:     10,
 }
 
 func TestGenerateSalt(t *testing.T) {

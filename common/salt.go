@@ -1,6 +1,5 @@
-// (C) Copyright 2012, Jeramey Crawford <jeramey@antihe.ro>. All
-// rights reserved. Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
+// SPDX-FileCopyrightText: 2012 Jeramey Crawford <jeramey@antihe.ro>
+// SPDX-License-Identifier: BSD-2-Clause
 
 package common
 
@@ -37,8 +36,8 @@ type Salt struct {
 //
 // The length is set thus:
 //
-//   length > SaltLenMax: length = SaltLenMax
-//   length < SaltLenMin: length = SaltLenMin
+//	length > SaltLenMax: length = SaltLenMax
+//	length < SaltLenMin: length = SaltLenMin
 func (s *Salt) Generate(length int) []byte {
 	if length > s.SaltLenMax {
 		length = s.SaltLenMax
@@ -64,12 +63,12 @@ func (s *Salt) Generate(length int) []byte {
 //
 // The parameters are set thus:
 //
-//   length > SaltLenMax: length = SaltLenMax
-//   length < SaltLenMin: length = SaltLenMin
+//	length > SaltLenMax: length = SaltLenMax
+//	length < SaltLenMin: length = SaltLenMin
 //
-//   rounds < 0: rounds = RoundsDefault
-//   rounds < RoundsMin: rounds = RoundsMin
-//   rounds > RoundsMax: rounds = RoundsMax
+//	rounds < 0: rounds = RoundsDefault
+//	rounds < RoundsMin: rounds = RoundsMin
+//	rounds > RoundsMax: rounds = RoundsMax
 //
 // If rounds is equal to RoundsDefault, then the "rounds=" part of the salt is
 // removed.

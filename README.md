@@ -45,7 +45,12 @@ To install crypt, use the *go install* command:
     	// <nil>
     }
 
+
 ## Documentation
 
 The documentation is available on
 [go.dev](https://pkg.go.dev/github.com/tredoe/crypt)
+
+## License
+
+The source files are distributed under the **BSD 2-Clause "Simplified" License**.
