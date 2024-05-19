@@ -13,7 +13,7 @@ to ensure compatibility with them.
 
 I hope you find this library to be useful and easy to use!
 
-*NOTE:* the package is a fork from 'github.com/GehirnInc/crypt'.
+**NOTE:** the package is a fork from 'github.com/GehirnInc/crypt'.
 
 ## Install
 
@@ -27,4 +27,4 @@ The documentation is available on
 
 ## License
 
-The source files are distributed under the **BSD 2-Clause "Simplified" License**.
+The source files are distributed under the *BSD 2-Clause "Simplified" License*
