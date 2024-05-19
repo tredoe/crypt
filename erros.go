@@ -14,12 +14,12 @@ var (
 	ErrUnknown     = errors.New("unknown crypt function")
 )
 
-// UnknownError reports a string without a known crypt function.
+// UnknownError reports a hashed string without a known crypt function.
 type UnknownError string
 
 func (e UnknownError) Error() string {
 	// Hash like: $1$deadbeef$...
 	fields := strings.Split(string(e), "$")
 
-	return fmt.Sprintf("%s: %s", ErrUnknown, fields[1])
+	return fmt.Sprintf("%s: $%s$", ErrUnknown, fields[1])
 }

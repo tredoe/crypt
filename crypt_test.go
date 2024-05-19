@@ -4,6 +4,7 @@
 package crypt_test
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/tredoe/crypt"
@@ -12,12 +13,16 @@ import (
 
 func TestSupport(t *testing.T) {
 	hash := "$apr1$salt$hash"
-	if _, err := crypt.NewFromHash(hash); err != nil {
+	_, err := crypt.NewFromHash(hash)
+	if err != nil {
 		t.Errorf("expect support for hash: %q", hash)
 	}
 
 	hash = "$unknown$salt$hash"
-	if _, err := crypt.NewFromHash(hash); err == nil {
-		t.Errorf("expect no support for hash: %q", hash)
+	if _, err = crypt.NewFromHash(hash); err == nil {
+		t.Fatalf("expect no support for hash: %q", hash)
+	}
+	if !strings.HasSuffix(err.Error(), "$unknown$") {
+		t.Error("expect that error got the crypt magic identifier")
 	}
 }
