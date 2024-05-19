@@ -6,13 +6,10 @@
 package crypt
 
 import (
-	"errors"
 	"strings"
 
 	"github.com/tredoe/crypt/common"
 )
-
-var ErrKeyMismatch = errors.New("hashed value is not the hash of the given password")
 
 // Crypter is the common interface implemented by all crypt functions.
 type Crypter interface {
@@ -49,72 +46,61 @@ type Crypter interface {
 type Crypt uint
 
 const (
-	APR1   Crypt = 1 + iota // import github.com/tredoe/crypt/apr1_crypt
-	MD5                     // import github.com/tredoe/crypt/md5_crypt
-	SHA256                  // import github.com/tredoe/crypt/sha256_crypt
-	SHA512                  // import github.com/tredoe/crypt/sha512_crypt
+	APR1   Crypt = iota // import github.com/tredoe/crypt/apr1_crypt
+	MD5                 // import github.com/tredoe/crypt/md5_crypt
+	SHA256              // import github.com/tredoe/crypt/sha256_crypt
+	SHA512              // import github.com/tredoe/crypt/sha512_crypt
 	maxCrypt
 )
 
-var crypts = make([]func() Crypter, maxCrypt)
+var (
+	crypts        = make([]func() Crypter, maxCrypt)
+	cryptPrefixes = make([]string, maxCrypt)
+)
+
+// * * *
+
+// New returns a new crypter.
+func New(c Crypt) Crypter { return c.New() }
+
+// NewFromHash returns a new Crypter using the prefix in the given hashed key.
+func NewFromHash(hashedKey string) (Crypter, error) {
+	for i := range cryptPrefixes {
+		prefix := cryptPrefixes[i]
+
+		if crypts[i] != nil && strings.HasPrefix(hashedKey, prefix) {
+			c := Crypt(uint(i))
+			return c.New(), nil
+		}
+	}
+
+	return nil, ErrUnknown
+}
 
 // New returns new Crypter making the Crypt c.
 // New panics if the Crypt c is unavailable.
 func (c Crypt) New() Crypter {
-	if c > 0 && c < maxCrypt {
+	if c < maxCrypt {
 		f := crypts[c]
 		if f != nil {
 			return f()
 		}
 	}
-	panic("crypt: requested crypt function is unavailable")
+	panic(ErrUnknown)
 }
 
 // Available reports whether the Crypt c is available.
 func (c Crypt) Available() bool {
-	return c > 0 && c < maxCrypt && crypts[c] != nil
+	return c < maxCrypt && crypts[c] != nil
 }
-
-var cryptPrefixes = make([]string, maxCrypt)
 
 // RegisterCrypt registers a function that returns a new instance of the given
 // crypt function. This is intended to be called from the init function in
 // packages that implement crypt functions.
 func RegisterCrypt(c Crypt, f func() Crypter, prefix string) {
 	if c >= maxCrypt {
-		panic("crypt: RegisterHash of unknown crypt function")
+		panic(ErrUnknown)
 	}
 	crypts[c] = f
 	cryptPrefixes[c] = prefix
-}
-
-// New returns a new crypter.
-func New(c Crypt) Crypter {
-	return c.New()
-}
-
-// IsHashSupported returns true if hashedKey has a supported prefix.
-// NewFromHash will not panic for this hashedKey
-func IsHashSupported(hashedKey string) bool {
-	for i := range cryptPrefixes {
-		prefix := cryptPrefixes[i]
-		if crypts[i] != nil && strings.HasPrefix(hashedKey, prefix) {
-			return true
-		}
-	}
-
-	return false
-}
-
-// NewFromHash returns a new Crypter using the prefix in the given hashed key.
-func NewFromHash(hashedKey string) Crypter {
-	for i := range cryptPrefixes {
-		prefix := cryptPrefixes[i]
-		if crypts[i] != nil && strings.HasPrefix(hashedKey, prefix) {
-			crypt := Crypt(uint(i))
-			return crypt.New()
-		}
-	}
-
-	panic("crypt: unknown crypt function")
 }

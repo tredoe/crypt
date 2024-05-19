@@ -17,33 +17,7 @@ I hope you find this library to be useful and easy to use!
 
 ## Install
 
-To install crypt, use the *go install* command:
-
 	go install github.com/tredoe/crypt@latest
-
-## Usage
-
-    package main
-
-    import (
-    	"fmt"
-
-    	"github.com/tredoe/crypt"
-    	_ "github.com/tredoe/crypt/sha256_crypt"
-    )
-
-    func main() {
-    	crypt := crypt.SHA256.New()
-    	ret, _ := crypt.Generate([]byte("secret"), []byte("$5$salt"))
-    	fmt.Println(ret)
-
-    	err := crypt.Verify(ret, []byte("secret"))
-    	fmt.Println(err)
-
-    	// Output:
-    	// $5$salt$kpa26zwgX83BPSR8d7w93OIXbFt/d3UOTZaAu5vsTM6
-    	// <nil>
-    }
 
 
 ## Documentation

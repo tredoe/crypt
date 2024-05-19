@@ -12,14 +12,12 @@ import (
 
 func TestSupport(t *testing.T) {
 	hash := "$apr1$salt$hash"
-	ok := crypt.IsHashSupported(hash)
-	if !ok {
+	if _, err := crypt.NewFromHash(hash); err != nil {
 		t.Errorf("expect support for hash: %q", hash)
 	}
 
 	hash = "$unknown$salt$hash"
-	ok = crypt.IsHashSupported(hash)
-	if ok {
+	if _, err := crypt.NewFromHash(hash); err == nil {
 		t.Errorf("expect no support for hash: %q", hash)
 	}
 }
