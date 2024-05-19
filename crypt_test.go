@@ -3,9 +3,9 @@ package crypt_test
 import (
 	"testing"
 
-	"github.com/GehirnInc/crypt"
-	_ "github.com/GehirnInc/crypt/apr1_crypt"
 	"github.com/stretchr/testify/assert"
+	"github.com/tredoe/crypt"
+	_ "github.com/tredoe/crypt/apr1_crypt"
 )
 
 func TestIsHashSupported(t *testing.T) {

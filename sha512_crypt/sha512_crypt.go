@@ -15,9 +15,9 @@ import (
 	"crypto/subtle"
 	"strconv"
 
-	"github.com/GehirnInc/crypt"
-	"github.com/GehirnInc/crypt/common"
-	"github.com/GehirnInc/crypt/internal"
+	"github.com/tredoe/crypt"
+	"github.com/tredoe/crypt/common"
+	"github.com/tredoe/crypt/internal"
 )
 
 func init() {

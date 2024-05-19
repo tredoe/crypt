@@ -4,5 +4,5 @@
 
 ### Other authors
 
-- [Jonas mg](https://github.com/kless)
+- [Jonás Melián](https://github.com/kless)
 - [Kohei YOSHIDA](https://github.com/yosida95)

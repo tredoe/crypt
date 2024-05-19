@@ -1,8 +1,5 @@
-.. image:: https://travis-ci.org/GehirnInc/crypt.svg?branch=master
-    :target: https://travis-ci.org/GehirnInc/crypt
+# crypt - A password hashing library for Go
 
-crypt - A password hashing library for Go
-=========================================
 crypt provides pure golang implementations of UNIX's crypt(3).
 
 The goal of crypt is to bring a library of many common and popular password
@@ -16,28 +13,23 @@ to ensure compatibility with them.
 
 I hope you find this library to be useful and easy to use!
 
-Install
--------
+*NOTE:* the package is a fork from 'github.com/GehirnInc/crypt'.
 
-To install crypt, use the *go get* command.
+## Install
 
-.. code-block:: sh
+To install crypt, use the *go install* command:
 
-   go get github.com/GehirnInc/crypt
+	go install github.com/tredoe/crypt@latest
 
-
-Usage
------
-
-.. code-block:: go
+## Usage
 
     package main
 
     import (
     	"fmt"
 
-    	"github.com/GehirnInc/crypt"
-    	_ "github.com/GehirnInc/crypt/sha256_crypt"
+    	"github.com/tredoe/crypt"
+    	_ "github.com/tredoe/crypt/sha256_crypt"
     )
 
     func main() {
@@ -53,9 +45,7 @@ Usage
     	// <nil>
     }
 
-Documentation
--------------
+## Documentation
 
-The documentation is available on GoDoc_.
-
-.. _GoDoc: https://godoc.org/github.com/GehirnInc/crypt
+The documentation is available on
+[go.dev](https://pkg.go.dev/github.com/tredoe/crypt)

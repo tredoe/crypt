@@ -1,4 +1,4 @@
-module github.com/GehirnInc/crypt
+module github.com/tredoe/crypt
 
 go 1.19
 
