@@ -6,6 +6,7 @@ package crypt
 import (
 	"errors"
 	"fmt"
+	"strings"
 )
 
 var (
@@ -17,5 +18,8 @@ var (
 type UnknownError string
 
 func (e UnknownError) Error() string {
-	return fmt.Sprintf("%s: %s", ErrUnknown, string(e))
+	// Hash like: $1$deadbeef$...
+	fields := strings.Split(string(e), "$")
+
+	return fmt.Sprintf("%s: %s", ErrUnknown, fields[1])
 }
