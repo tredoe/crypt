@@ -6,14 +6,20 @@ package crypt_test
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/tredoe/crypt"
 	_ "github.com/tredoe/crypt/apr1_crypt"
 )
 
-func TestIsHashSupported(t *testing.T) {
-	apr1 := crypt.IsHashSupported("$apr1$salt$hash")
-	assert.True(t, apr1)
-	other := crypt.IsHashSupported("$unknown$salt$hash")
-	assert.False(t, other)
+func TestSupport(t *testing.T) {
+	hash := "$apr1$salt$hash"
+	ok := crypt.IsHashSupported(hash)
+	if !ok {
+		t.Errorf("expect support for hash: %q", hash)
+	}
+
+	hash = "$unknown$salt$hash"
+	ok = crypt.IsHashSupported(hash)
+	if ok {
+		t.Errorf("expect no support for hash: %q", hash)
+	}
 }
