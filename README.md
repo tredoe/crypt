@@ -17,7 +17,7 @@ I hope you find this library to be useful and easy to use!
 
 ## Install
 
-	go install github.com/tredoe/crypt@latest
+	go get github.com/tredoe/crypt@latest
 
 
 ## Documentation
