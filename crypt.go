@@ -74,7 +74,17 @@ func NewFromHash(hashedKey string) (Crypter, error) {
 		}
 	}
 
-	return nil, ErrUnknown
+	// The hashes can start like:
+	// $1$deadbeef$...
+	// or
+	// $6$rounds=10000$saltstringsaltst$...
+
+	nDollar := strings.Count(hashedKey, "$")
+
+	if hashedKey[0] != '$' || nDollar < 3 || nDollar > 4 {
+		return nil, ErrUnknown
+	}
+	return nil, UnknownError(hashedKey)
 }
 
 // New returns new Crypter making the Crypt c.
